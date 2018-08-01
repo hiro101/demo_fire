@@ -1,35 +1,71 @@
+<!--carousel-->
+<%= render "parts/carousel"%>
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<div class="categories mb-4">
+  <button type="button" class="btn btn-light m-3 c-btn">
+    <%= link_to "アート・写真",controller:"posts",action:"index",category: 0 , class:"text-dark"%>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+    <%= link_to "音楽",controller:"posts",action:"index",category: 1, class:"category-button"%>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+    <%= link_to "舞台・パフォーマンス",controller:"posts",action:"index",category: 2, class:"category-button"%>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+    <%= link_to "プロダクト",controller:"posts",action:"index",category: 3, class:"category-button"%>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+    <%= link_to "テクノロジー",controller:"posts",action:"index",category: 4, class:"category-button"%>
+  </button></br>
+  <button type="button" class="btn btn-light m-3 c-btn">
+    <%= link_to "ゲーム",controller:"posts",action:"index",category: 5, class:"category-button" %>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+     <%= link_to "フード・飲食店",controller:"posts",action:"index",category: 6, class:"category-button" %>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+     <%= link_to "ファッション",controller:"posts",action:"index",category: 7, class:"category-button" %>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+     <%= link_to "映像・映画",controller:"posts",action:"index",category: 8, class:"category-button" %>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+     <%= link_to "書籍",controller:"posts",action:"index",category: 9, class:"category-button " %>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+     <%= link_to "アニメ",controller:"posts",action:"index",category: 10, class:"category-button" %>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+     <%= link_to "スポーツ",controller:"posts",action:"index",category: 11, class:"category-button" %>
+  </button></br>
+  <button type="button" class="btn btn-light m-3 c-btn">
+     <%= link_to "ビジネス・起業",controller:"posts",action:"index",category: 12, class:"category-button " %>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+     <%= link_to "チャレンジ",controller:"posts",action:"index",category: 13, class:"category-button" %>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+     <%= link_to "ビューティー・ヘルスケア",controller:"posts",action:"index",category: 14, class:"category-button" %>
+  </button>
+  <button type="button" class="btn btn-light m-3 c-btn">
+     <%= link_to "まちづくり・地域活性",controller:"posts",action:"index",category: 15, class:"category-button" %>
+  </button>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Image</th>
-      <th>Text</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container">
+  <div class="row">
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.user_id %></td>
-        <td><%= post.title %></td>
-        <td><%= post.image %></td>
-        <td><%= post.text %></td>
-        <td><%= post.category %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="card col-md-3">
+        <%= link_to post do %>
+          <%= image_tag(post.image_url,class:"card-img-top card-img",alt:"イメージ画像") if post.image.present?  %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title" style="font-weight:bold;"><%=post.title%></h4>
+          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', edit_post_path(post) %>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+  </div>
+</div>

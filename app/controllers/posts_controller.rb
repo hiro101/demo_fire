@@ -5,6 +5,14 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @post = Post.find_by(id: params[:id])
+    
+    if params[:search].present? 
+      @posts = @posts.search params[:search]
+    end
+    if params[:category].present?
+      @posts = @posts.get_by_category params[:category]
+    end
   end
 
   # GET /posts/1

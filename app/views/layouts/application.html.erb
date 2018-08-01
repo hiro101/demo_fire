@@ -1,15 +1,68 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Democamp</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Demofire</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
+  </head>
+    
   <body>
-    <%= yield %>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-white bg-white fixed-top text-dark">
+    <!--Logo-->
+    <strong>
+      <%= link_to 'Solve', '/', class:'nav-brand text-dark h1'%>
+    </strong><!--Logo-->
+
+    <!--ToggleButton-->
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+      <span class="navbar-toggler-icon"></span>
+    </button><!--/ToggleButton-->
+
+    <div class="collapse navbar-collapse ml-4" id="Navber">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to "アイデアを投稿", new_post_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item dropdown">
+          <%= link_to 'アイデアを探す', '#', class:'nav-link dropdown-toggle', id:"navbarDropdown", data:{toggle:"dropdown", role:"button"}, aria:{haspopup:"true", expanded:"false"}%>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">メニュー1</a>
+            <a class="dropdown-item" href="#">メニュー2</a>
+            <a class="dropdown-item" href="#">メニュー3</a>
+            <a class="dropdown-item" href="#">メニュー4</a>
+            <a class="dropdown-item" href="#">メニュー5</a>
+            <a class="dropdown-item" href="#">メニュー6</a>
+            <a class="dropdown-item" href="#">メニュー7</a>
+            <a class="dropdown-item" href="#">メニュー8</a>
+            <a class="dropdown-item" href="#">メニュー9</a>
+            <a class="dropdown-item" href="#">メニュー10</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Solveとは？","home/about",class:"nav-link"%>
+        </li>
+      </ul>
+      
+      <%= form_tag(posts_path, method: "get", class: "form-inline my-2 my-lg-0") do %>
+        <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2" %>
+        <%= submit_tag '検索', class: "btn btn-success btn-outline-white my-2 my-sm-0" %>
+　　　 <% end %>
+
+    </div><!-- /.navbar-collapse -->
+  </nav>
+
+     <%= yield %>
+
+  <footer>
+  </footer>
   </body>
 </html>
