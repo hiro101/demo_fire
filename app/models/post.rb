@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+    mount_uploader :image, ImageUploader
     enum category: { 
         ArtPhotography: 0, Musics: 1, Performance: 2, Product: 3, TechnicalGadget: 4,
          GameService: 5, Food: 6,Fashion: 7, Movies: 8,

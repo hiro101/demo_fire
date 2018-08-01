@@ -1,4 +1,7 @@
 <%= form_with(model: post, local: true) do |form| %>
+<div class="container">
+<div class="row justify-content-md-center forms">
+<div class="col-md-5">
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -10,33 +13,32 @@
       </ul>
     </div>
   <% end %>
-
+<div>
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+    <strong class="form">タイトル</strong>
+    <%= form.text_field :title, class:"form" %>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <strong class="form">イメージ画像</strong>
+    <%= form.file_field :image, id: :post_image, class:"form" %>
   </div>
 
   <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image %>
+    <strong class="form">説明文</strong>
+    <%= form.text_area :text, class:"form" %>
   </div>
 
   <div class="field">
-    <%= form.label :text %>
-    <%= form.text_area :text %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.number_field :category %>
+    <p>カテゴリー</p>
+    <%= form.select :category, Post.categories.keys, class:"form"%>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
+</div>
+</div>
+</div>
+</div>
 <% end %>
