@@ -20,7 +20,7 @@
           <%= link_to post do %>
             <h5 class="card-title" style="font-weight:bold;"><%=post.title%></h4>
           <% end %>
-          <%= link_to post.category ,controller:"posts",action:"index",category: post.category %>
+          <%= link_to post.category ,controller:"posts",action:"index",category: post.category %></br>
           <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
           <%= link_to 'Edit', edit_post_path(post) %>
         </div>
